@@ -22,6 +22,8 @@ import {
 } from '@/types/property';
 import { formatPrice, formatArea } from '@/lib/utils';
 
+import ImageGallery from '@/components/ImageGallery'; //Importar la implementación para la galería de imágenes.
+
 /**
  * Página de detalle de una propiedad.
  */
@@ -96,19 +98,11 @@ export function PropertyDetailPage(): React.ReactElement {
             </span>
           </div>
 
-          {/* Galería de imágenes adicionales */}
-          {property.images.length > 1 && (
-            <div className="grid grid-cols-4 gap-2">
-              {property.images.slice(1).map((img, index) => (
-                <img
-                  key={index}
-                  src={img}
-                  alt={`${property.title} - Imagen ${index + 2}`}
-                  className="w-full h-24 object-cover rounded-lg"
-                />
-              ))}
-            </div>
-          )}
+          {/* Nueva Galería de imágenes interactiva */}
+          <div className="mt-6 mb-8">
+            <h2 className="text-xl font-semibold mb-4">Galería de Imágenes</h2>
+            <ImageGallery images={property.images} />
+          </div>
 
           {/* Descripción */}
           <Card>
